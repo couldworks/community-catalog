@@ -1,12 +1,13 @@
 version: '2'
+catalog:
+  name: "SonarQube"
+  version: "latest"
+  description: "SonarQube is an open source platform for continuous inspection of code quality."
+  uuid: sonarqube-0
+  minimum_rancher_version: v0.51.0
+  questions:
 services:
   sonarqube:
     scale: 1
-    health_check:
-      port: 9000
-      interval: 2000
-      unhealthy_threshold: 3
-      healthy_threshold: 2
-      response_timeout: 2000
   db:
     scale: 1
