@@ -1,0 +1,29 @@
+version: '2'
+services:
+    mysql:
+      image: mysql:5.7
+      volumes:
+        - "/data/mysqlwiki:/var/lib/mysql"
+      ports:
+        - "3306:3306"
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD: admin1234
+        MYSQL_DATABASE: mediawiki
+        MYSQL_USER: root
+        MYSQL_PASSWORD: admin1234
+    mediawiki:
+      image: synctree/mediawiki:latest
+      depends_on:
+        - mysql
+      links:
+        - mysql
+      ports:
+        - "8080:8080"
+        - "8000:80"
+      restart: always
+      environment:
+        MEDIAWIKI_DB_HOST: mysql:3306
+        MYSQL_DATABASE: mediawiki
+        MEDIAWIKI_DB_USER: root
+        MEDIAWIKI_DB_PASSWORD: admin1234
