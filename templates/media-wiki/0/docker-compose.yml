@@ -19,7 +19,7 @@ services:
       links:
         - mysql
       ports:
-        - "8000:80"
+        - ${http_port}:80
       restart: always
       environment:
         MEDIAWIKI_DB_HOST: mysql:3306

@@ -5,6 +5,11 @@
   uuid: media-wiki-0
   minimum_rancher_version: v0.51.0
   questions:
-
+    - variable: http_port
+      description: "http port to access Media Wiki"
+      label: "Http Port"
+      required: true
+      default: "8000"
+      type: "int"
 
 media-wiki:
